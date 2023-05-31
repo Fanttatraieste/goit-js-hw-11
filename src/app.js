@@ -1,4 +1,5 @@
 const notiflix = require('notiflix'); 
+const _ = require('lodash');
 const searchBar = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-button');
 const container = document.querySelector('.images-container');
@@ -17,6 +18,7 @@ searchBtn.addEventListener('click', () => {
         if(users.hits.length == 0)
             notiflix.Report.failure('Sorry, there are no images matching your search query. Please try again.');
         else {
+            notiflix.Notify.success("Good job, Boss");
             console.log(users);
             buildImages(users.hits);
             //addLightbox();
@@ -115,6 +117,24 @@ const buildImages = (imageList) => {
 
 
 
-document.addEventListener('scrollend', () => {
-    console.log('scroll has ended');
-});
+window.onscroll = function() {
+    const distanceScrolled = document.documentElement.scrollTop;
+    //console.log('Scrolled: ' + distanceScrolled);
+    if (document.documentElement.scrollHeight - distanceScrolled - document.documentElement.clientHeight < 50) {
+        console.log("valei, am ajuns");
+        page += 1;
+        fetchUsers(word, page)
+            .then(users => {
+            if(users.hits.length == 0)
+                notiflix.Report.failure('Sorry, there are no images matching your search query. Please try again.');
+            else {
+                console.log(users);
+                buildImages(users.hits);
+            }
+            })
+            .catch(e => {
+                console.log(e);
+            });
+    }
+    
+};
