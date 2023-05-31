@@ -9,12 +9,21 @@
     </head>
     <body>
         <header class="header">
-            <input class="search-bar">
-            <button type="submit">
+            <input 
+                class="search-bar"
+                autocomplete="off"
+                placeholder="Search images..."
+            >
+            <button type="submit" class="search-button">
                 <svg class="search-icon">
                     <use href="./symbol.svg#icon-search"></use>
                 </svg>
             </button>
         </header>
+        <div class="images-container">
+
+        </div>
+
+        <script src="./app.js" type="module"></script>
     </body>
 </html>
