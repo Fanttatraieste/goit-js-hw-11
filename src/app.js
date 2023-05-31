@@ -1,5 +1,4 @@
 const notiflix = require('notiflix'); 
-//const simpleLightbox = require('Simplelightbox');
 const searchBar = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-button');
 const container = document.querySelector('.images-container');
@@ -11,6 +10,7 @@ searchBar.addEventListener('input', () => {
 });
 
 searchBtn.addEventListener('click', () => {
+    container.innerHTML="";
     fetchUsers(word, page)
         .then(users => {
         if(users.hits.length == 0)
@@ -18,6 +18,7 @@ searchBtn.addEventListener('click', () => {
         else {
             console.log(users);
             buildImages(users.hits);
+            //addLightbox();
         }
         })
         .catch(e => console.log(e));
@@ -102,7 +103,7 @@ const buildImages = (imageList) => {
         details.insertAdjacentElement("beforeend", viewElement);
         details.insertAdjacentElement("beforeend", downloadElement);
 
-        const item = document.createElement('div');
+        const item = document.createElement('li');
         item.classList.add('item');
         item.insertAdjacentElement('afterbegin', link);
         item.insertAdjacentElement('beforeend', details);
@@ -113,19 +114,6 @@ const buildImages = (imageList) => {
 
 
 
-const addLightbox = () => {
-    const gallery = document.querySelector('.images-container');
-    const galleryLinks = document.querySelectorAll('.link');
-
-    galleryLinks.forEach((link) => {
-        link.addEventListener('click', (event) => {
-            event.preventDefault();
-        })
-    });
-
-    const lightbox = new SimpleLightbox(".images-container a", {
-        captions: true,
-        captionsData: "alt",
-        captionDelay: 250
-    });
-}
+document.addEventListener('scrollend', () => {
+    console.log('scroll has ended');
+});
