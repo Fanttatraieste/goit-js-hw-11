@@ -11,6 +11,7 @@ searchBar.addEventListener('input', () => {
 
 searchBtn.addEventListener('click', () => {
     container.innerHTML="";
+    page = 1;
     fetchUsers(word, page)
         .then(users => {
         if(users.hits.length == 0)
