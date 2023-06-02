@@ -87,3 +87,7 @@ button:hover{
     height:200px;
     object-fit: cover;
 }
+
+*{
+    list-style: none;
+}

@@ -1,5 +1,6 @@
 const notiflix = require('notiflix'); 
 const _ = require('lodash');
+
 const searchBar = document.querySelector('.search-bar');
 const searchBtn = document.querySelector('.search-button');
 const container = document.querySelector('.images-container');
@@ -22,6 +23,7 @@ searchBtn.addEventListener('click', () => {
             console.log(users);
             buildImages(users.hits);
             //addLightbox();
+            createLightBox();
         }
         })
         .catch(e => console.log(e));
@@ -53,10 +55,10 @@ const buildImages = (imageList) => {
 
 
 
-        const link = document.createElement('a');
-        link.href - bigUrl;
+        let link = document.createElement('a');
+        link.href = bigUrl;
         link.classList.add('link');
-        const img = document.createElement('img');
+        let img = document.createElement('img');
         img.classList.add('item-image');
         img.src = tinyUrl;
         img.alt = 'Lala Band';
@@ -130,6 +132,7 @@ window.onscroll = function() {
             else {
                 console.log(users);
                 buildImages(users.hits);
+                createLightBox();
             }
             })
             .catch(e => {
@@ -138,3 +141,14 @@ window.onscroll = function() {
     }
     
 };
+
+
+
+const createLightBox = () => {
+    //simplelightbox
+    let lightbox = new SimpleLightbox(".images-container a", {
+        captions: true,
+        captionsData: "alt",
+        captionDelay: 250,
+    });
+}
