@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Fanttatraieste/goit-js-hw-11"
+    "url": "git+https://fanttatraieste.github.io/goit-js-hw-11.git"
   },
   "keywords": [],
   "author": "Me Myself and I",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Fanttatraieste/goit-js-hw-11"
+    "url": "https://fanttatraieste.github.io/goit-js-hw-11/issues"
   },
   "dependencies": {
     "lodash": "^4.17.21",
